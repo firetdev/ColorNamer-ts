@@ -1,0 +1,23 @@
+.custom-picker {
+  width: 200px;
+  height: 200px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.custom-picker::-webkit-color-swatch {
+  border: none;
+}
+
+.custom-picker::-moz-color-swatch {
+  border: none;
+}
+
+.button {
+  transition: opacity 0.4s ease;
+}
+
+.button:hover {
+  opacity: 0.82;
+}
