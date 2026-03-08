@@ -1,12 +1,44 @@
 import { useState } from 'react';
 import './App.css';
 
+const hexToRgb = (hex: string) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : { r: 0, g: 0, b: 0 };
+};
+
 function App() {
-  const [color, setColor] = useState<string>('#3498db')
+  const [color, setColor] = useState<string>('#3498db');
+  const [colorName, setColorName] = useState<string | null>(null);
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColor(e.target.value)
   }
+
+  const nameColor = async () => {
+    const rgb = hexToRgb(color);
+
+    try {
+      const response = await fetch('http://localhost:3000/api/color', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(rgb),
+      });
+
+      const data = await response.json();
+      
+      if (data.closestColor) {
+        setColorName(data.closestColor);
+      }
+    } catch (error) {
+      console.error('Error fetching color name:', error);
+    }
+  };
 
   return (
     <div style={{ 
@@ -46,6 +78,7 @@ function App() {
       <div style={{ marginTop: '2rem' }}>
         <div
           className="button"
+          onClick={nameColor}
           style={{
             backgroundColor: color,
             padding: '1rem 2rem',
@@ -60,6 +93,21 @@ function App() {
           Name color
         </div>
       </div>
+      {colorName && (
+        <div style={{
+          marginTop: '1rem',
+          padding: '2rem',
+          borderRadius: '16px',
+          backgroundColor: '#f5f5f5',
+          textAlign: 'center',
+          border: `4px solid ${color}`
+        }}>
+          <h2><i>Your color is...</i></h2>
+          <h1 style={{ color: color, fontSize: '3rem', margin: 0 }}>
+            {colorName}
+          </h1>
+        </div>
+      )}
     </div>
   )
 }
