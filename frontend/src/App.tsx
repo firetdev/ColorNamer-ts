@@ -18,7 +18,11 @@ function App() {
       fontFamily: 'system-ui, sans-serif' 
     }}>
 
-      <h1 style={{ marginTop: '35%' }}>ColorNamer</h1>
+      <br/>
+      <h1 style={{ marginTop: '0.5rem', marginBottom: 0 }}>ColorNamer</h1>
+      <h3 style={{ marginTop: '-1.5rem', textAlign: 'center' }}>
+        <i>An appeal to authority<br/>for stupid arguments</i>
+      </h3>
       
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexDirection: 'column' }}>
         <input 
