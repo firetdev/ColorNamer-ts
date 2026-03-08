@@ -11,12 +11,19 @@ const hexToRgb = (hex: string) => {
 };
 
 function App() {
-  const [color, setColor] = useState<string>('#3498db');
+  const INITIAL_COLOR = '#3498db';
+
+  const [color, setColor] = useState<string>(INITIAL_COLOR);
   const [colorName, setColorName] = useState<string | null>(null);
 
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColor(e.target.value)
   }
+
+  const resetApp = () => {
+    setColor(INITIAL_COLOR);
+    setColorName(null);
+  };
 
   const nameColor = async () => {
     const rgb = hexToRgb(color);
@@ -99,21 +106,41 @@ function App() {
     )}
 
       {colorName && (
-        <div style={{
-          marginTop: '1rem',
-          padding: '2rem',
-          paddingTop: '0.7rem',
-          borderRadius: '16px',
-          backgroundColor: '#f5f5f5',
-          textAlign: 'center',
-          border: `4px solid ${color}`,
-          animation: 'fadeInRight 0.5s ease-out'
-        }}>
-          <h2><i>Your color is...</i></h2>
-          <h1 style={{ color: color, fontSize: '3rem', margin: 0 }}>
-            {colorName}
-          </h1>
-        </div>
+        <>
+          <div style={{
+            marginTop: '1rem',
+            marginBottom: '2rem',
+            padding: '2rem',
+            paddingTop: '0.7rem',
+            borderRadius: '16px',
+            backgroundColor: '#f5f5f5',
+            textAlign: 'center',
+            border: `4px solid ${color}`,
+            animation: 'fadeInRight 0.5s ease-out'
+          }}>
+            <h2><i>Your color is...</i></h2>
+            <h1 style={{ color: color, fontSize: '3rem', margin: 0 }}>
+              {colorName}
+            </h1>
+          </div>
+
+          <div
+            className="button"
+            onClick={resetApp}
+            style={{
+              backgroundColor: color,
+              padding: '1rem 2rem',
+              borderRadius: '16px',
+              display: 'inline-block',
+              fontWeight: 'bold',
+              color: '#fff',
+              fontSize: '110%',
+              cursor: 'pointer'
+            }}
+          >
+            New color
+          </div>
+        </>
       )}
     </div>
   );
