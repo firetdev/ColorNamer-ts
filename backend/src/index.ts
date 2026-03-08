@@ -18,7 +18,7 @@ const colors: Color[] = [
   { name: 'Orange', rgb: [255, 165, 0] },
   { name: 'Yellow', rgb: [255, 255, 0] },
   { name: 'Green', rgb: [0, 128, 0] },
-  { name: 'Blue', rgb: [0, 0, 255] },
+  { name: 'Blue', rgb: [0, 105, 215] },
   { name: 'Indigo', rgb: [75, 0, 130] },
   { name: 'Violet', rgb: [238, 130, 238] },
   { name: 'White', rgb: [255, 255, 255] },

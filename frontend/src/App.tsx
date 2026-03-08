@@ -56,51 +56,58 @@ function App() {
         <i>An appeal to authority<br/>for stupid arguments</i>
       </h3>
       
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexDirection: 'column' }}>
-        <input 
-          type="color"
-          value={color}
-          onChange={handleColorChange}
-          className="custom-picker"
-          style={{ backgroundColor: color }}
-        />
+      {!colorName && (
+        <>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexDirection: 'column' }}>
+          <input 
+            type="color"
+            value={color}
+            onChange={handleColorChange}
+            className="custom-picker"
+            style={{ backgroundColor: color }}
+          />
 
-        <input 
-          type="text" 
-          value={color} 
-          onChange={handleColorChange}
-          placeholder="#FFFFFF"
-          maxLength={7}
-          style={{ padding: '0.5rem', fontSize: '1.2rem', textTransform: 'uppercase', textAlign: 'center' }}
-        />
-      </div>
-
-      <div style={{ marginTop: '2rem' }}>
-        <div
-          className="button"
-          onClick={nameColor}
-          style={{
-            backgroundColor: color,
-            padding: '1rem 2rem',
-            borderRadius: '16px',
-            display: 'inline-block',
-            fontWeight: 'bold',
-            color: '#fff',
-            fontSize: '110%',
-            cursor: 'pointer'
-          }}
-        >
-          Name color
+          <input 
+            type="text" 
+            value={color} 
+            onChange={handleColorChange}
+            placeholder="#FFFFFF"
+            maxLength={7}
+            style={{ padding: '0.5rem', fontSize: '1.2rem', textTransform: 'uppercase', textAlign: 'center' }}
+          />
         </div>
-      </div>
+
+        <div style={{ marginTop: '2rem' }}>
+          <div
+            className="button"
+            onClick={nameColor}
+            style={{
+              backgroundColor: color,
+              padding: '1rem 2rem',
+              borderRadius: '16px',
+              display: 'inline-block',
+              fontWeight: 'bold',
+              color: '#fff',
+              fontSize: '110%',
+              cursor: 'pointer'
+            }}
+          >
+            Name color
+          </div>
+        </div>
+      </>
+    )}
+
       {colorName && (
         <div style={{
           marginTop: '1rem',
           padding: '2rem',
+          paddingTop: '0.7rem',
           borderRadius: '16px',
           backgroundColor: '#f5f5f5',
           textAlign: 'center',
-          border: `4px solid ${color}`
+          border: `4px solid ${color}`,
+          animation: 'fadeInRight 0.5s ease-out'
         }}>
           <h2><i>Your color is...</i></h2>
           <h1 style={{ color: color, fontSize: '3rem', margin: 0 }}>
@@ -109,7 +116,7 @@ function App() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default App
