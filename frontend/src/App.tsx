@@ -9,10 +9,18 @@ function App() {
   }
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>ColorNamer</h1>
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      minHeight: '100vh', 
+      gap: '2rem',
+      fontFamily: 'system-ui, sans-serif' 
+    }}>
+
+      <h1 style={{ marginTop: '35%' }}>ColorNamer</h1>
       
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexDirection: 'column' }}>
         <input 
           type="color"
           value={color}
@@ -20,14 +28,14 @@ function App() {
           className="custom-picker"
           style={{ backgroundColor: color }}
         />
-        
+
         <input 
           type="text" 
           value={color} 
           onChange={handleColorChange}
           placeholder="#FFFFFF"
           maxLength={7}
-          style={{ padding: '0.5rem', fontSize: '1.2rem', textTransform: 'uppercase' }}
+          style={{ padding: '0.5rem', fontSize: '1.2rem', textTransform: 'uppercase', textAlign: 'center' }}
         />
       </div>
 
