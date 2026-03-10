@@ -10,7 +10,7 @@ const hexToRgb = (hex: string) => {
   } : { r: 0, g: 0, b: 0 };
 };
 
-function App() {
+const App: React.FC = () => {
   const INITIAL_COLOR = '#3498db';
 
   const [color, setColor] = useState<string>(INITIAL_COLOR);
